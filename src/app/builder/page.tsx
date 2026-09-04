@@ -266,9 +266,12 @@ export default function HomePage() {
 
       {/* Footer */}
       <footer className="border-t border-white/[0.04] mt-12">
-        <div className="max-w-[1600px] mx-auto px-4 sm:px-6 py-6 text-center">
-          <p className="text-xs text-surface-600">
+        <div className="max-w-[1600px] mx-auto px-4 sm:px-6 py-8 flex flex-col items-center justify-center gap-2">
+          <p className="text-xs text-surface-500 text-center">
             ATS Resume Builder · 100% Client-Side · No Data Stored on Servers · Powered by AI
+          </p>
+          <p className="text-[13px] font-medium text-surface-400 mt-2">
+            Designed & Developed with ❤️ by <a href="https://github.com/nikhd02" target="_blank" rel="noopener noreferrer" className="text-brand-400 hover:text-brand-300 transition-colors">Adarsh Dubey</a>
           </p>
         </div>
       </footer>

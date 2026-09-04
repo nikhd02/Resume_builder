@@ -113,17 +113,23 @@ export default function LandingPage() {
 
       {/* Footer */}
       <footer className="relative z-10 bg-surface-950 py-12 border-t border-white/[0.04]">
-        <div className="max-w-[1200px] mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="max-w-[1200px] mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-2">
             <FileText className="w-4 h-4 text-brand-400" />
             <span className="text-sm font-bold text-white tracking-wide">ATS Builder</span>
           </div>
-          <p className="text-xs text-surface-500">
-            &copy; {new Date().getFullYear()} ATS Resume Builder. All rights reserved. No data stored on servers.
-          </p>
+          
+          <div className="flex flex-col items-center text-center">
+            <p className="text-xs text-surface-500 mb-1">
+              &copy; {new Date().getFullYear()} ATS Resume Builder. All rights reserved.
+            </p>
+            <p className="text-xs font-medium text-surface-400">
+              Designed & Developed with ❤️ by <a href="https://github.com/nikhd02" target="_blank" rel="noopener noreferrer" className="text-brand-400 hover:text-brand-300 transition-colors">Adarsh Dubey</a>
+            </p>
+          </div>
+
           <div className="flex gap-4 text-xs text-surface-500">
-            <a href="#" className="hover:text-white transition">Privacy Policy</a>
-            <a href="#" className="hover:text-white transition">Terms of Service</a>
+            <a href="https://github.com/nikhd02/Resume_builder" target="_blank" rel="noopener noreferrer" className="hover:text-white transition">Source Code</a>
           </div>
         </div>
       </footer>
