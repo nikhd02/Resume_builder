@@ -100,7 +100,7 @@ export default function CheckerPage() {
             Check Your <span className="text-gradient">ATS Score</span>
           </h1>
           <p className="text-surface-400 max-w-[600px] mx-auto">
-            Upload your existing PDF resume and paste the job description you're applying for. Our AI will grade your resume and give you actionable feedback.
+            Upload your existing PDF resume and paste the job description you&apos;re applying for. Our AI will grade your resume and give you actionable feedback.
           </p>
         </div>
 
