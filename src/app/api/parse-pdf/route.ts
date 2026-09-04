@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+// @ts-expect-error - pdf-parse does not have types with a default export
 import pdfParse from 'pdf-parse';
 
 export async function POST(req: Request) {
