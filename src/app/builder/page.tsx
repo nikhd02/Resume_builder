@@ -271,7 +271,7 @@ export default function HomePage() {
             ATS Resume Builder · 100% Client-Side · No Data Stored on Servers · Powered by AI
           </p>
           <p className="text-[13px] font-medium text-surface-400 mt-2">
-            Designed & Developed with ❤️ by <a href="https://github.com/nikhd02" target="_blank" rel="noopener noreferrer" className="text-brand-400 hover:text-brand-300 transition-colors">Adarsh Dubey</a>
+            Designed & Developed with ❤️ by <a href="https://adarsh-portfolio-delta-sepia.vercel.app/" target="_blank" rel="noopener noreferrer" className="text-brand-400 hover:text-brand-300 transition-colors">Adarsh Dubey</a>
           </p>
         </div>
       </footer>

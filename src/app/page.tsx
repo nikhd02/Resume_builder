@@ -124,7 +124,7 @@ export default function LandingPage() {
               &copy; {new Date().getFullYear()} ATS Resume Builder. All rights reserved.
             </p>
             <p className="text-xs font-medium text-surface-400">
-              Designed & Developed with ❤️ by <a href="https://github.com/nikhd02" target="_blank" rel="noopener noreferrer" className="text-brand-400 hover:text-brand-300 transition-colors">Adarsh Dubey</a>
+              Designed & Developed with ❤️ by <a href="https://adarsh-portfolio-delta-sepia.vercel.app/" target="_blank" rel="noopener noreferrer" className="text-brand-400 hover:text-brand-300 transition-colors">Adarsh Dubey</a>
             </p>
           </div>
 
