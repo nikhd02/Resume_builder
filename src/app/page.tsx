@@ -27,8 +27,7 @@ export default function LandingPage() {
           </div>
           <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-surface-400">
             <a href="#features" className="hover:text-white transition-colors">Features</a>
-            <a href="#templates" className="hover:text-white transition-colors">Templates</a>
-            <a href="#pricing" className="hover:text-white transition-colors">Pricing</a>
+            <Link href="/checker" className="hover:text-white transition-colors">Check Resume Score</Link>
           </nav>
           <Link href="/builder" className="btn-secondary hidden md:flex items-center gap-2 py-2 px-5">
             Login
@@ -56,9 +55,9 @@ export default function LandingPage() {
           <Link href="/builder" className="btn-primary text-lg px-8 py-4 w-full sm:w-auto flex items-center justify-center gap-2 glow-brand">
             Build Your Resume <ChevronRight className="w-5 h-5" />
           </Link>
-          <a href="#features" className="btn-secondary text-lg px-8 py-4 w-full sm:w-auto flex items-center justify-center">
-            How it works
-          </a>
+          <Link href="/checker" className="btn-secondary text-lg px-8 py-4 w-full sm:w-auto flex items-center justify-center gap-2">
+            <Target className="w-5 h-5" /> Score Existing Resume
+          </Link>
         </div>
       </main>
 
