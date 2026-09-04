@@ -14,7 +14,7 @@ import ATSScore from "@/components/preview/ATSScore";
 import PDFDownloadButton from "@/components/pdf/PDFDownloadButton";
 import {
   User, Briefcase, GraduationCap, Wrench, Target,
-  Sparkles, Loader2, RotateCcw, FileText, ChevronRight, ChevronLeft, Zap,
+  Sparkles, Loader2, RotateCcw, FileText, ChevronRight, ChevronLeft, Zap, UploadCloud
 } from "lucide-react";
 
 const tabs: { key: FormTab; label: string; icon: React.ReactNode; color: string }[] = [
@@ -31,6 +31,7 @@ export default function HomePage() {
   const [optimizedData, setOptimizedData] = useState<OptimizedResumeResponse | null>(null);
   const [template, setTemplate] = useState<ResumeTemplate>("classic");
   const [isOptimizing, setIsOptimizing] = useState(false);
+  const [isAutoFilling, setIsAutoFilling] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [mounted, setMounted] = useState(false);
 
@@ -71,6 +72,57 @@ export default function HomePage() {
       setIsOptimizing(false);
     }
   }, [userData]);
+
+  const handleAutoFill = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    setIsAutoFilling(true);
+    setError(null);
+    
+    try {
+      const formData = new FormData();
+      formData.append("file", file);
+
+      const parseRes = await fetch("/api/parse-pdf", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (!parseRes.ok) throw new Error("Failed to parse PDF.");
+      const { text } = await parseRes.json();
+
+      if (!text || text.trim().length < 50) {
+        throw new Error("Could not extract enough text from the PDF. Is it an image-based PDF?");
+      }
+
+      const extractRes = await fetch("/api/extract-resume", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ resumeText: text }),
+      });
+
+      if (!extractRes.ok) throw new Error("Failed to extract data using AI.");
+      const extractedData = await extractRes.json();
+
+      setUserData(prev => ({
+        ...prev,
+        personalInfo: extractedData.personalInfo || prev.personalInfo,
+        experience: extractedData.experience || prev.experience,
+        education: extractedData.education || prev.education,
+        skills: extractedData.skills || prev.skills,
+        jobDescription: prev.jobDescription // preserve job description
+      }));
+      
+      // Clear file input
+      e.target.value = '';
+    } catch (err: any) {
+      console.error(err);
+      setError(err.message || "Failed to auto-fill from PDF");
+    } finally {
+      setIsAutoFilling(false);
+    }
+  };
 
   const handleReset = () => {
     if (confirm("Are you sure? This will clear all your data.")) {
@@ -124,8 +176,14 @@ export default function HomePage() {
             </div>
           </div>
           <div className="flex items-center gap-2">
+            <label className={`btn-ghost flex items-center gap-1.5 text-sm cursor-pointer ${isAutoFilling ? 'opacity-50 pointer-events-none' : ''}`}>
+              {isAutoFilling ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <UploadCloud className="w-3.5 h-3.5" />}
+              <span className="hidden sm:inline">{isAutoFilling ? 'Auto-filling...' : 'Auto-fill PDF'}</span>
+              <input type="file" accept="application/pdf" className="hidden" onChange={handleAutoFill} disabled={isAutoFilling} />
+            </label>
+            <div className="w-px h-4 bg-white/[0.1] hidden sm:block mx-1"></div>
             <button onClick={handleReset} className="btn-ghost flex items-center gap-1.5 text-sm">
-              <RotateCcw className="w-3.5 h-3.5" /> Reset
+              <RotateCcw className="w-3.5 h-3.5" /> <span className="hidden sm:inline">Reset</span>
             </button>
             <button
               onClick={() => handleOptimize(false)}
