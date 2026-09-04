@@ -82,7 +82,7 @@ export default function LandingPage() {
               </div>
               <h3 className="text-xl font-semibold text-white mb-3">XYZ Bullet Rewriter</h3>
               <p className="text-surface-400 leading-relaxed text-sm">
-                Paste your simple job descriptions and watch AI transform them into powerful, quantifiable achievements using Google's recommended XYZ formula.
+                Paste your simple job descriptions and watch AI transform them into powerful, quantifiable achievements using Google&apos;s recommended XYZ formula.
               </p>
             </div>
 

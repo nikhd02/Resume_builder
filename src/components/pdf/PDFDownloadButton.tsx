@@ -39,7 +39,7 @@ export default function PDFDownloadButton({ userData, optimizedData, template }:
     } finally {
       setIsGenerating(false);
     }
-  }, [userData, optimizedData]);
+  }, [userData, optimizedData, template]);
 
   return (
     <button
