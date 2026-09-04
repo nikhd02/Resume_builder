@@ -14,7 +14,7 @@ export async function POST(req: Request) {
     const buffer = Buffer.from(arrayBuffer);
 
     return new Promise<NextResponse>((resolve) => {
-      const pdfParser = new PDFParser(null, 1);
+      const pdfParser = new PDFParser(null, true);
       
       pdfParser.on("pdfParser_dataError", (errData: any) => {
         console.error('pdf2json error:', errData.parserError);
