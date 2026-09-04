@@ -1,0 +1,162 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap");
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-surface-950 text-white font-sans antialiased;
+    min-height: 100vh;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-surface-900;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-surface-600 rounded-full;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-surface-500;
+  }
+}
+
+@layer components {
+  /* Glassmorphism card */
+  .glass-card {
+    @apply bg-white/[0.04] backdrop-blur-xl border border-white/[0.08] rounded-2xl;
+  }
+
+  .glass-card-hover {
+    @apply glass-card transition-all duration-300;
+  }
+  .glass-card-hover:hover {
+    @apply bg-white/[0.07] border-white/[0.14] shadow-lg shadow-brand-500/5;
+  }
+
+  /* Input styling */
+  .form-input {
+    @apply w-full px-4 py-3 bg-white/[0.05] border border-white/[0.1] rounded-xl text-white 
+           placeholder:text-surface-500 focus:outline-none focus:ring-2 focus:ring-brand-500/40 
+           focus:border-brand-500/50 transition-all duration-300;
+  }
+
+  .form-input:hover {
+    @apply bg-white/[0.07] border-white/[0.15];
+  }
+
+  .form-label {
+    @apply block text-sm font-medium text-surface-300 mb-1.5;
+  }
+
+  .form-textarea {
+    @apply form-input resize-none;
+  }
+
+  /* Button variants */
+  .btn-primary {
+    @apply px-6 py-3 bg-gradient-to-r from-brand-600 to-brand-500 text-white font-semibold 
+           rounded-xl shadow-lg shadow-brand-500/25 hover:shadow-brand-500/40 
+           hover:from-brand-500 hover:to-brand-400 active:scale-[0.98]
+           transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed 
+           disabled:hover:shadow-brand-500/25;
+  }
+
+  .btn-secondary {
+    @apply px-6 py-3 bg-white/[0.06] text-white font-medium rounded-xl border border-white/[0.1]
+           hover:bg-white/[0.1] hover:border-white/[0.2] active:scale-[0.98]
+           transition-all duration-300;
+  }
+
+  .btn-ghost {
+    @apply px-4 py-2 text-surface-400 hover:text-white hover:bg-white/[0.06] 
+           rounded-lg transition-all duration-200;
+  }
+
+  /* Tab buttons */
+  .tab-button {
+    @apply flex items-center gap-2.5 px-4 py-3 text-sm font-medium rounded-xl 
+           transition-all duration-300 text-surface-400 hover:text-white hover:bg-white/[0.06];
+  }
+
+  .tab-button.active {
+    @apply text-white bg-brand-600/20 border border-brand-500/30 shadow-lg shadow-brand-500/10;
+  }
+
+  /* Badge */
+  .badge {
+    @apply inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-medium 
+           bg-brand-500/15 text-brand-300 border border-brand-500/20;
+  }
+
+  .badge-success {
+    @apply bg-emerald-500/15 text-emerald-300 border-emerald-500/20;
+  }
+
+  .badge-warning {
+    @apply bg-amber-500/15 text-amber-300 border-amber-500/20;
+  }
+
+  /* Skill tag */
+  .skill-tag {
+    @apply inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm
+           bg-white/[0.06] border border-white/[0.1] text-surface-300
+           hover:bg-white/[0.1] hover:border-white/[0.15] hover:text-white
+           transition-all duration-200 cursor-default;
+  }
+
+  .skill-tag-highlighted {
+    @apply bg-brand-500/15 border-brand-500/25 text-brand-300;
+  }
+
+  /* ATS Score ring */
+  .score-ring {
+    @apply relative inline-flex items-center justify-center;
+  }
+
+  /* Shimmer loading */
+  .shimmer {
+    @apply relative overflow-hidden;
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.03) 25%,
+      rgba(255, 255, 255, 0.08) 50%,
+      rgba(255, 255, 255, 0.03) 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 2s linear infinite;
+  }
+
+  /* Resume preview paper */
+  .resume-paper {
+    @apply bg-white text-gray-900 shadow-2xl rounded-lg overflow-hidden;
+    font-family: "Times New Roman", "Georgia", serif;
+    aspect-ratio: 8.5 / 11;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-400 to-teal-400;
+  }
+
+  .glow-brand {
+    box-shadow: 0 0 40px rgba(16, 185, 129, 0.15),
+      0 0 80px rgba(16, 185, 129, 0.05);
+  }
+}
