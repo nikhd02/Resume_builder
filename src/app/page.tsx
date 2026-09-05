@@ -128,7 +128,8 @@ export default function LandingPage() {
           </div>
 
           <div className="flex gap-4 text-xs text-surface-500">
-            <a href="https://github.com/nikhd02/Resume_builder" target="_blank" rel="noopener noreferrer" className="hover:text-white transition">Source Code</a>
+            {/* Empty space to keep flex justification balanced if needed, or remove completely. Let's keep it empty for flex-between */}
+            <div className="w-[100px]"></div>
           </div>
         </div>
       </footer>
